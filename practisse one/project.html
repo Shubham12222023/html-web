@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+    <link rel="stylesheet" href="pro.css">
+</head>
+<body>
+    <header>
+        <h1>Student Portfolio</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>This is where you can introduce yourself.</p>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project 1</h3>
+            <p>Description of project 1</p>
+        </div>
+        <div class="project">
+            <h3>Project 2</h3>
+            <p>Description of project 2</p>
+        </div>
+        <!-- Add more projects as needed -->
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error" id="name-error"></div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="email-error"></div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <div class="error" id="message-error"></div>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Student Portfolio</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(function(navLink) {
+                navLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = navLink.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const nameInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                const messageInput = document.getElementById('message');
+
+                validateForm(nameInput, emailInput, messageInput);
+            });
+
+            function validateForm(nameInput, emailInput, messageInput) {
+                let isValid = true;
+
+                if (nameInput.value.trim() === '') {
+                    isValid = false;
+                    showError('name-error', 'Name is required');
+                } else {
+                    hideError('name-error');
+                }
+
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(emailInput.value.trim())) {
+                    isValid = false;
+                    showError('email-error', 'Please enter a valid email address');
+                } else {
+                    hideError('email-error');
+                }
+
+                if (messageInput.value.trim() === '') {
+                    isValid = false;
+                    showError('message-error', 'Message is required');
+                } else {
+                    hideError('message-error');
+                }
+
+                if (isValid) {
+                    console.log('Form submitted successfully!');
+                    form.reset();
+                }
+            }
+
+            function showError(id, errorMessage) {
+                const errorDiv = document.getElementById(id);
+                errorDiv.textContent = errorMessage;
+                errorDiv.style.display = 'block';
+            }
+
+            function hideError(id) {
+                const errorDiv = document.getElementById(id);
+                errorDiv.textContent = '';
+                errorDiv.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

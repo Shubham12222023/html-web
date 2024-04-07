@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script language="javascript">
+        var students = [
+            {"Name": "Shubham", "Roll": "57", "Subject": "INT222"},
+            {"Name": "Shiv", "Roll": "58", "Subject": "PHY101"},
+            {"Name": "Ramesh", "Roll": "59", "Subject": "MAT202"}
+        ];
+
+        document.write("<h3>Student Profiles</h3>");
+
+        for (var i = 0; i < students.length; i++) {
+            var student = students[i];
+            document.write("<h1>Student " + (i + 1) + "</h1>");
+            document.write("Name: " + student.Name + "<br>");
+            document.write("Roll No: " + student.Roll + "<br>");
+            document.write("Subject: " + student.Subject + "<br><br>");
+        }
+    </script>
+
+</body>
+</html>

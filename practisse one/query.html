@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .menu-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart {
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        .cart-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Food Delivery</h1>
+    </header>
+
+    <div class="menu">
+        <div class="menu-item" data-name="Pizza" data-price="10">
+            <span>Pizza</span>
+            <span>$10</span>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item" data-name="Burger" data-price="8">
+            <span>Burger</span>
+            <span>$8</span>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>Cart</h2>
+        <ul class="cart-items"></ul>
+        <p>Total: $<span class="cart-total">0</span></p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var cartItems = [];
+
+            $('.add-to-cart').click(function() {
+                var menuItem = $(this).closest('.menu-item');
+                var itemName = menuItem.data('name');
+                var itemPrice = parseFloat(menuItem.data('price'));
+                cartItems.push({ name: itemName, price: itemPrice });
+                updateCart();
+            });
+
+            function updateCart() {
+                var cartList = $('.cart-items');
+                cartList.empty();
+                var total = 0;
+                $.each(cartItems, function(index, item) {
+                    cartList.append('<li class="cart-item">' + item.name + ' - $' + item.price + '</li>');
+                    total += item.price;
+                });
+                $('.cart-total').text(total.toFixed(2));
+            }
+        });
+    </script>
+</body>
+</html>

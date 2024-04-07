@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="C:\Users\91834\Pictures\shubham.jpg" height="200" width="200" id="im">
+    <input type="submit" onclick="stop()">
+        <script>
+            var i=setTimeout(imag,6000);
+            function imag()
+            {
+                document.getElementById("im").style.width="500px";
+            }
+            function stop(){
+                clearTimeout(i);
+            }
+        </script>
+    
+</body>
+</html>

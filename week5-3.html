@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+    #thumbnailContainer {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    #fullSizeContainer {
+      text-align: center;
+    }
+
+    #fullSizeImage {
+      max-width: 100%;
+      max-height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="thumbnailContainer">
+  <img class="thumbnail" src="https://th.bing.com/th/id/OIP.OXAnFMe7dzTHRHcaK1SQcQHaFj?rs=1&pid=ImgDetMain"  onclick="displayImage('fullSizeImage', 'https://th.bing.com/th/id/OIP.OXAnFMe7dzTHRHcaK1SQcQHaFj?rs=1&pid=ImgDetMain')">
+  <img class="thumbnail" src="https://th.bing.com/th/id/OIP.Dr2JdYBG4YqctPY__xw4nwHaEm?w=1452&h=903&rs=1&pid=ImgDetMain"  onclick="displayImage('fullSizeImage', 'https://th.bing.com/th/id/OIP.Dr2JdYBG4YqctPY__xw4nwHaEm?w=1452&h=903&rs=1&pid=ImgDetMain')">
+  <img class="thumbnail" src="https://i.pinimg.com/originals/6d/16/fe/6d16fec690eabb26db68c26d5a924a31.jpg"  onclick="displayImage('fullSizeImage', 'https://i.pinimg.com/originals/6d/16/fe/6d16fec690eabb26db68c26d5a924a31.jpg')">
+</div>
+
+<div id="fullSizeContainer">
+  <img id="fullSizeImage" src="" alt="Full Size Image">
+</div>
+
+<script>
+  function displayImage(imageId, imagePath) {
+    var fullSizeImage = document.getElementById(imageId);
+    fullSizeImage.src = imagePath;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Action Example</title>
+  <style>
+    #hiddenParagraph {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<button id="myButton">Click me</button>
+<p id="visibleParagraph">This is visible text.</p>
+<p id="hiddenParagraph">This is hidden text.</p>
+
+<script>
+  document.getElementById('myButton').addEventListener('click', function() {
+
+    var visibleParagraph = document.getElementById('visibleParagraph');
+    var hiddenParagraph = document.getElementById('hiddenParagraph');
+
+    visibleParagraph.style.display = (visibleParagraph.style.display === 'none') ? 'block' : 'none';
+    hiddenParagraph.style.display = (hiddenParagraph.style.display === 'none') ? 'block' : 'none';
+
+    visibleParagraph.textContent = 'Text changed dynamically!';
+  });
+</script>
+
+</body>
+</html>

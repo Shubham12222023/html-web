@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #myImage {
+        max: width 400px;
+        width: 1000px;
+        height:auto;
+        }
+        body {
+            background-color: #d3d3d3;
+        }
+    </style>
+</head>
+<body>
+    <p id="myParagraph">Original Text</p>
+    <button id="myButton">Toggle Image</button>
+    <img id="myImage" src="https://th.bing.com/th/id/R.732440a404bebef70fe332b2aede9762?rik=SV5X1as3sHt0fg&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f04%2fHD-Cute-Dog-Wallpaper-backgrounds.jpg&ehk=zM6X8%2bi5ikW1QlWzhrQJvvwViQwrOzv0Zyol%2bx2JsBM%3d&risl=&pid=ImgRaw&r=0" alt="Your Image">
+    <script>
+        document.getElementById('myParagraph').textContent = 'New Text Content';
+
+        document.getElementById('myButton').addEventListener('click', function() {
+            var img = document.getElementById('myImage');
+            img.style.display = (img.style.display == 'none') ? 'block' : 'none';
+        });
+
+        document.body.style.backgroundColor = '#ADD8E6'; 
+
+        var newElement = document.createElement('div');
+        newElement.textContent = 'This is a new element';
+        document.body.appendChild(newElement);
+    </script>
+</body>
+</html>

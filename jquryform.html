@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Form</title>
+<style>
+  #form-container { width: 300px; margin: 0 auto; } 
+  label { display: block; } 
+  input { margin-bottom: 10px; } 
+  #city-info { margin-top: 20px; }
+  .highlight { color: rgb(236, 152, 232); }
+</style>
+</head>
+<body>
+
+<div id="form-container">
+  <form id="user-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="city">Select City:</label>
+    <select id="city" name="city">
+      <option value="New York">New York</option>
+      <option value="London">London</option>
+      <option value="Paris">Paris</option>
+      <option value="Tokyo">Tokyo</option>
+    </select><br><br>
+
+    <button type="submit" id="submit-btn">Submit</button>
+  </form>
+
+  <div id="city-info">
+    Your city: <span id="user-city"></span>
+    <button id="append-btn">Append Data</button>
+    <button id="prepend-btn">Prepend Data</button>
+    <button id="add-class-btn">Add Class</button>
+    <button id="toggle-btn">Toggle City Info</button>
+    <button id="remove-btn">Remove Appended Data</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('#city').change(function() {
+    var selectedCity = $(this).val();
+    $('#user-city').text(selectedCity);
+  });
+
+  $('#append-btn').click(function() {
+    $('#user-city').append(' Additional Data Appended');
+  });
+
+  $('#prepend-btn').click(function() {
+    $('#user-city').prepend('Prepended Data: ');
+  });
+
+  $('#add-class-btn').click(function() {
+    $('#user-city').addClass('highlight');
+  });
+
+  $('#user-city').click(function() {
+    $(this).toggleClass('highlight');
+  });
+
+  $('#toggle-btn').click(function() {
+    $('#user-city').toggle();
+  });
+
+  $('#remove-btn').click(function() {
+    $('#user-city').find('span').remove();
+  });
+
+  function getUserCity() {
+    $.ajax({
+      url: 'https://ipapi.co/json/',
+      dataType: 'json',
+      success: function(data) {
+        $('#city').val(data.city).change();
+      },
+    });
+  }
+
+  getUserCity();
+
+  $('#user-form').submit(function(event) {
+    event.preventDefault();
+    var username = $('#username').val();
+    var password = $('#password').val();
+    var selectedCity = $('#city').val();
+    console.log('Username:', username);
+    console.log('Password:', password);
+    console.log('Selected City:', selectedCity);
+    $('#username, #password').val('');
+  });
+});
+</script>
+</body>
+</html>

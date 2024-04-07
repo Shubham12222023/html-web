@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Font and Body Color</title>
+<style>
+    body {
+        transition: background-color 0.5s ease;
+    }
+    #content {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        transition: font-family 0.5s ease;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    button{
+        background-color: rgb(69, 176, 100);
+        padding: 20px;
+        color: white;
+        border-radius: 20px;
+        margin: 5px;
+        font-size: larger;
+    }
+    .navbar {
+      margin-top: 20px;
+      border: 4px solid grey;
+      border-radius: 20px;
+      background-color: grey;
+    }
+
+    .ul {
+      display: flex;
+      justify-content: space-evenly;
+      list-style-type: none;
+    }
+
+    .navContent {
+      color: white;
+    }
+
+    .navContent:hover {
+      color: orange;
+      cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <ul class="ul">
+          <li class="navContent">Home</li>
+          <li class="navContent">Products</li>
+          <li class="navContent">About</li>
+          <li class="navContent">Contact</li>
+        </ul>
+      </div>
+<p id="content"> Default font.</p>
+
+<button id="changeFontBtn">Font</button>
+<button id="addImageBtn">Image</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $(document).keypress(function(event){
+            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            $('body').css('background-color', randomColor);
+        });
+
+        $('#changeFontBtn').click(function(){
+            $('#content').css('font-family', 'Georgia, serif');
+        });
+
+        $('#addImageBtn').click(function(){
+            var img = $('<img>').attr('src', 'https://th.bing.com/th/id/R.a23e2dcdd3de73def6ddbd3cae1742c6?rik=Qp5z6JrTCMtjVg&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f04%2f06%2f338054-landscape-Sun.jpg&ehk=SsN0SMy0iAXyYPKSGIUJc1FqWGO2tx3k%2fQngJQj%2flPs%3d&risl=&pid=ImgRaw&r=0').attr('alt', 'Placeholder Image');
+            $('body').append(img);
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2> Various Errors </h2>
+
+
+<form id="inputForm">
+  Enter a JavaScript statement: <input type="text" id="userInput"><br>
+  <input type="button" value="Start Process" onclick="startProcess()">
+</form>
+
+<p id="result"></p>
+
+<script type="text/javascript">
+    function startProcess() {
+        try {
+            
+            var userInput = document.getElementById("userInput").value;
+            
+            
+            executeUserInput(userInput);
+            
+           
+            document.getElementById("result").innerHTML = "No errors occurred.";
+        } catch (error) {
+            
+            document.getElementById("result").innerHTML = "An error occurred: " + error.message;
+        }
+    }
+
+    function executeUserInput(input) {
+        
+        try {
+            eval(input);
+        } catch (error) {
+            
+            throw new Error(error.message);
+        }
+    }
+</script>
+
+</body>
+</html>

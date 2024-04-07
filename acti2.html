@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormForge</title>
+    <script>
+        function validateForm() {
+            var nameField = document.getElementById('name');
+            if (nameField.value === '' || !/^[a-zA-Z]+$/.test(nameField.value)) {
+                alert('Please enter a valid name with only letters.');
+                return false;
+            }
+
+            var emailField = document.getElementById('email');
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            var passwordField = document.getElementById('password');
+            if (passwordField.value.length < 8) {
+                alert('Password must be at least 8 characters long.');
+                return false;
+            }
+                        setTimeout(function() {
+                alert('Welcome! Form submitted successfully.');
+            }, 1000);
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
